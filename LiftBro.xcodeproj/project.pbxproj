@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3753170D1EDC634900878804 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753170C1EDC634900878804 /* AppDelegate.swift */; };
+		3753170F1EDC634900878804 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753170E1EDC634900878804 /* ViewController.swift */; };
+		375317121EDC634900878804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375317101EDC634900878804 /* Main.storyboard */; };
+		375317151EDC634900878804 /* LiftBro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 375317131EDC634900878804 /* LiftBro.xcdatamodeld */; };
+		375317171EDC634900878804 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375317161EDC634900878804 /* Assets.xcassets */; };
+		3753171A1EDC634900878804 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375317181EDC634900878804 /* LaunchScreen.storyboard */; };
+		375317251EDC634900878804 /* LiftBroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375317241EDC634900878804 /* LiftBroTests.swift */; };
+		375317301EDC634900878804 /* LiftBroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753172F1EDC634900878804 /* LiftBroUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		375317211EDC634900878804 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 375317011EDC634900878804 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 375317081EDC634900878804;
+			remoteInfo = LiftBro;
+		};
+		3753172C1EDC634900878804 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 375317011EDC634900878804 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 375317081EDC634900878804;
+			remoteInfo = LiftBro;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		375317091EDC634900878804 /* LiftBro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftBro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3753170C1EDC634900878804 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3753170E1EDC634900878804 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		375317111EDC634900878804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		375317141EDC634900878804 /* LiftBro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiftBro.xcdatamodel; sourceTree = "<group>"; };
+		375317161EDC634900878804 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		375317191EDC634900878804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3753171B1EDC634900878804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		375317201EDC634900878804 /* LiftBroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiftBroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		375317241EDC634900878804 /* LiftBroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftBroTests.swift; sourceTree = "<group>"; };
+		375317261EDC634900878804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3753172B1EDC634900878804 /* LiftBroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiftBroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3753172F1EDC634900878804 /* LiftBroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftBroUITests.swift; sourceTree = "<group>"; };
+		375317311EDC634900878804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		375317061EDC634900878804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3753171D1EDC634900878804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		375317281EDC634900878804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		375317001EDC634900878804 = {
+			isa = PBXGroup;
+			children = (
+				3753170B1EDC634900878804 /* LiftBro */,
+				375317231EDC634900878804 /* LiftBroTests */,
+				3753172E1EDC634900878804 /* LiftBroUITests */,
+				3753170A1EDC634900878804 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3753170A1EDC634900878804 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				375317091EDC634900878804 /* LiftBro.app */,
+				375317201EDC634900878804 /* LiftBroTests.xctest */,
+				3753172B1EDC634900878804 /* LiftBroUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3753170B1EDC634900878804 /* LiftBro */ = {
+			isa = PBXGroup;
+			children = (
+				3753170C1EDC634900878804 /* AppDelegate.swift */,
+				3753170E1EDC634900878804 /* ViewController.swift */,
+				375317101EDC634900878804 /* Main.storyboard */,
+				375317161EDC634900878804 /* Assets.xcassets */,
+				375317181EDC634900878804 /* LaunchScreen.storyboard */,
+				3753171B1EDC634900878804 /* Info.plist */,
+				375317131EDC634900878804 /* LiftBro.xcdatamodeld */,
+			);
+			path = LiftBro;
+			sourceTree = "<group>";
+		};
+		375317231EDC634900878804 /* LiftBroTests */ = {
+			isa = PBXGroup;
+			children = (
+				375317241EDC634900878804 /* LiftBroTests.swift */,
+				375317261EDC634900878804 /* Info.plist */,
+			);
+			path = LiftBroTests;
+			sourceTree = "<group>";
+		};
+		3753172E1EDC634900878804 /* LiftBroUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3753172F1EDC634900878804 /* LiftBroUITests.swift */,
+				375317311EDC634900878804 /* Info.plist */,
+			);
+			path = LiftBroUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		375317081EDC634900878804 /* LiftBro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 375317341EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBro" */;
+			buildPhases = (
+				375317051EDC634900878804 /* Sources */,
+				375317061EDC634900878804 /* Frameworks */,
+				375317071EDC634900878804 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiftBro;
+			productName = LiftBro;
+			productReference = 375317091EDC634900878804 /* LiftBro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3753171F1EDC634900878804 /* LiftBroTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 375317371EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBroTests" */;
+			buildPhases = (
+				3753171C1EDC634900878804 /* Sources */,
+				3753171D1EDC634900878804 /* Frameworks */,
+				3753171E1EDC634900878804 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				375317221EDC634900878804 /* PBXTargetDependency */,
+			);
+			name = LiftBroTests;
+			productName = LiftBroTests;
+			productReference = 375317201EDC634900878804 /* LiftBroTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3753172A1EDC634900878804 /* LiftBroUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3753173A1EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBroUITests" */;
+			buildPhases = (
+				375317271EDC634900878804 /* Sources */,
+				375317281EDC634900878804 /* Frameworks */,
+				375317291EDC634900878804 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3753172D1EDC634900878804 /* PBXTargetDependency */,
+			);
+			name = LiftBroUITests;
+			productName = LiftBroUITests;
+			productReference = 3753172B1EDC634900878804 /* LiftBroUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		375317011EDC634900878804 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Ari Gold";
+				TargetAttributes = {
+					375317081EDC634900878804 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = B24AHW8NH8;
+						ProvisioningStyle = Automatic;
+					};
+					3753171F1EDC634900878804 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = B24AHW8NH8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 375317081EDC634900878804;
+					};
+					3753172A1EDC634900878804 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = B24AHW8NH8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 375317081EDC634900878804;
+					};
+				};
+			};
+			buildConfigurationList = 375317041EDC634900878804 /* Build configuration list for PBXProject "LiftBro" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 375317001EDC634900878804;
+			productRefGroup = 3753170A1EDC634900878804 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				375317081EDC634900878804 /* LiftBro */,
+				3753171F1EDC634900878804 /* LiftBroTests */,
+				3753172A1EDC634900878804 /* LiftBroUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		375317071EDC634900878804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3753171A1EDC634900878804 /* LaunchScreen.storyboard in Resources */,
+				375317171EDC634900878804 /* Assets.xcassets in Resources */,
+				375317121EDC634900878804 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3753171E1EDC634900878804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		375317291EDC634900878804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		375317051EDC634900878804 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3753170F1EDC634900878804 /* ViewController.swift in Sources */,
+				375317151EDC634900878804 /* LiftBro.xcdatamodeld in Sources */,
+				3753170D1EDC634900878804 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3753171C1EDC634900878804 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				375317251EDC634900878804 /* LiftBroTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		375317271EDC634900878804 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				375317301EDC634900878804 /* LiftBroUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		375317221EDC634900878804 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 375317081EDC634900878804 /* LiftBro */;
+			targetProxy = 375317211EDC634900878804 /* PBXContainerItemProxy */;
+		};
+		3753172D1EDC634900878804 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 375317081EDC634900878804 /* LiftBro */;
+			targetProxy = 3753172C1EDC634900878804 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		375317101EDC634900878804 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				375317111EDC634900878804 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		375317181EDC634900878804 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				375317191EDC634900878804 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		375317321EDC634900878804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		375317331EDC634900878804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		375317351EDC634900878804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = B24AHW8NH8;
+				INFOPLIST_FILE = LiftBro/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Dimitrije.LiftBro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		375317361EDC634900878804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = B24AHW8NH8;
+				INFOPLIST_FILE = LiftBro/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Dimitrije.LiftBro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		375317381EDC634900878804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = B24AHW8NH8;
+				INFOPLIST_FILE = LiftBroTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Dimitrije.LiftBroTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiftBro.app/LiftBro";
+			};
+			name = Debug;
+		};
+		375317391EDC634900878804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = B24AHW8NH8;
+				INFOPLIST_FILE = LiftBroTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Dimitrije.LiftBroTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiftBro.app/LiftBro";
+			};
+			name = Release;
+		};
+		3753173B1EDC634900878804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = B24AHW8NH8;
+				INFOPLIST_FILE = LiftBroUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Dimitrije.LiftBroUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = LiftBro;
+			};
+			name = Debug;
+		};
+		3753173C1EDC634900878804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = B24AHW8NH8;
+				INFOPLIST_FILE = LiftBroUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Dimitrije.LiftBroUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = LiftBro;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		375317041EDC634900878804 /* Build configuration list for PBXProject "LiftBro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				375317321EDC634900878804 /* Debug */,
+				375317331EDC634900878804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		375317341EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				375317351EDC634900878804 /* Debug */,
+				375317361EDC634900878804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		375317371EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBroTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				375317381EDC634900878804 /* Debug */,
+				375317391EDC634900878804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3753173A1EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBroUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3753173B1EDC634900878804 /* Debug */,
+				3753173C1EDC634900878804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		375317131EDC634900878804 /* LiftBro.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				375317141EDC634900878804 /* LiftBro.xcdatamodel */,
+			);
+			currentVersion = 375317141EDC634900878804 /* LiftBro.xcdatamodel */;
+			path = LiftBro.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 375317011EDC634900878804 /* Project object */;
+}
