@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		373F41701EEF45B1004E0CE9 /* ModelClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373F416F1EEF45B1004E0CE9 /* ModelClasses.swift */; };
 		3753170D1EDC634900878804 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753170C1EDC634900878804 /* AppDelegate.swift */; };
-		3753170F1EDC634900878804 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753170E1EDC634900878804 /* ViewController.swift */; };
 		375317121EDC634900878804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375317101EDC634900878804 /* Main.storyboard */; };
-		375317151EDC634900878804 /* LiftBro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 375317131EDC634900878804 /* LiftBro.xcdatamodeld */; };
 		375317171EDC634900878804 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375317161EDC634900878804 /* Assets.xcassets */; };
 		3753171A1EDC634900878804 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375317181EDC634900878804 /* LaunchScreen.storyboard */; };
 		375317251EDC634900878804 /* LiftBroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375317241EDC634900878804 /* LiftBroTests.swift */; };
 		375317301EDC634900878804 /* LiftBroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753172F1EDC634900878804 /* LiftBroUITests.swift */; };
+		3777702D1EEAA1DF0025B483 /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777702C1EEAA1DF0025B483 /* FetchedResultsTableViewController.swift */; };
+		377770301EEEBA230025B483 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3777702E1EEEBA230025B483 /* Model.xcdatamodeld */; };
+		37F3A9F31EE5707D00855E31 /* TrainingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3A9F21EE5707D00855E31 /* TrainingsTableViewController.swift */; };
+		37F3A9F51EE5709A00855E31 /* ExercisesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3A9F41EE5709A00855E31 /* ExercisesTableViewController.swift */; };
+		37F3A9F71EE570C700855E31 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3A9F61EE570C700855E31 /* TrainingTableViewCell.swift */; };
+		37F3A9F91EE570DE00855E31 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3A9F81EE570DE00855E31 /* ExerciseTableViewCell.swift */; };
+		37F3A9FB1EE572F800855E31 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3A9FA1EE572F800855E31 /* Training.swift */; };
+		37F3A9FD1EE5742C00855E31 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3A9FC1EE5742C00855E31 /* Exercise.swift */; };
+		37FF5DA21EF182DB00437F97 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FF5DA11EF182DB00437F97 /* Date.swift */; };
+		37FF5DA41EF1968000437F97 /* AddExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FF5DA31EF1968000437F97 /* AddExerciseTableViewController.swift */; };
+		37FF5DA61EF1C79B00437F97 /* SetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FF5DA51EF1C79B00437F97 /* SetsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		373F416F1EEF45B1004E0CE9 /* ModelClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelClasses.swift; sourceTree = "<group>"; };
 		375317091EDC634900878804 /* LiftBro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftBro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3753170C1EDC634900878804 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3753170E1EDC634900878804 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		375317111EDC634900878804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		375317141EDC634900878804 /* LiftBro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiftBro.xcdatamodel; sourceTree = "<group>"; };
 		375317161EDC634900878804 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		375317191EDC634900878804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3753171B1EDC634900878804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +58,18 @@
 		3753172B1EDC634900878804 /* LiftBroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiftBroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3753172F1EDC634900878804 /* LiftBroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftBroUITests.swift; sourceTree = "<group>"; };
 		375317311EDC634900878804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3777702C1EEAA1DF0025B483 /* FetchedResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewController.swift; sourceTree = "<group>"; };
+		3777702F1EEEBA230025B483 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		37F3A9F21EE5707D00855E31 /* TrainingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingsTableViewController.swift; sourceTree = "<group>"; };
+		37F3A9F41EE5709A00855E31 /* ExercisesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisesTableViewController.swift; sourceTree = "<group>"; };
+		37F3A9F61EE570C700855E31 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
+		37F3A9F81EE570DE00855E31 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
+		37F3A9FA1EE572F800855E31 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
+		37F3A9FC1EE5742C00855E31 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		37FF5DA01EF1812B00437F97 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		37FF5DA11EF182DB00437F97 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		37FF5DA31EF1968000437F97 /* AddExerciseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseTableViewController.swift; sourceTree = "<group>"; };
+		37FF5DA51EF1C79B00437F97 /* SetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				3753170B1EDC634900878804 /* LiftBro */,
+				37F3A9F11EE56D3600855E31 /* Supporting Files */,
 				375317231EDC634900878804 /* LiftBroTests */,
 				3753172E1EDC634900878804 /* LiftBroUITests */,
 				3753170A1EDC634900878804 /* Products */,
@@ -99,13 +121,13 @@
 		3753170B1EDC634900878804 /* LiftBro */ = {
 			isa = PBXGroup;
 			children = (
-				3753170C1EDC634900878804 /* AppDelegate.swift */,
-				3753170E1EDC634900878804 /* ViewController.swift */,
 				375317101EDC634900878804 /* Main.storyboard */,
-				375317161EDC634900878804 /* Assets.xcassets */,
-				375317181EDC634900878804 /* LaunchScreen.storyboard */,
-				3753171B1EDC634900878804 /* Info.plist */,
-				375317131EDC634900878804 /* LiftBro.xcdatamodeld */,
+				377770291EE5ADC10025B483 /* Controllers */,
+				3777702A1EE5ADD00025B483 /* TableViewCells */,
+				3777702B1EE5ADDE0025B483 /* Model */,
+				3777702E1EEEBA230025B483 /* Model.xcdatamodeld */,
+				37FF5DA01EF1812B00437F97 /* MyPlayground.playground */,
+				37FF5DA11EF182DB00437F97 /* Date.swift */,
 			);
 			path = LiftBro;
 			sourceTree = "<group>";
@@ -126,6 +148,49 @@
 				375317311EDC634900878804 /* Info.plist */,
 			);
 			path = LiftBroUITests;
+			sourceTree = "<group>";
+		};
+		377770291EE5ADC10025B483 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3777702C1EEAA1DF0025B483 /* FetchedResultsTableViewController.swift */,
+				37F3A9F21EE5707D00855E31 /* TrainingsTableViewController.swift */,
+				37F3A9F41EE5709A00855E31 /* ExercisesTableViewController.swift */,
+				37FF5DA31EF1968000437F97 /* AddExerciseTableViewController.swift */,
+				37FF5DA51EF1C79B00437F97 /* SetsTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3777702A1EE5ADD00025B483 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				37F3A9F61EE570C700855E31 /* TrainingTableViewCell.swift */,
+				37F3A9F81EE570DE00855E31 /* ExerciseTableViewCell.swift */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		3777702B1EE5ADDE0025B483 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				37F3A9FA1EE572F800855E31 /* Training.swift */,
+				37F3A9FC1EE5742C00855E31 /* Exercise.swift */,
+				373F416F1EEF45B1004E0CE9 /* ModelClasses.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		37F3A9F11EE56D3600855E31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3753170C1EDC634900878804 /* AppDelegate.swift */,
+				375317161EDC634900878804 /* Assets.xcassets */,
+				375317181EDC634900878804 /* LaunchScreen.storyboard */,
+				3753171B1EDC634900878804 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			path = LiftBro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +330,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3753170F1EDC634900878804 /* ViewController.swift in Sources */,
-				375317151EDC634900878804 /* LiftBro.xcdatamodeld in Sources */,
+				37F3A9FB1EE572F800855E31 /* Training.swift in Sources */,
+				37F3A9FD1EE5742C00855E31 /* Exercise.swift in Sources */,
+				37F3A9F71EE570C700855E31 /* TrainingTableViewCell.swift in Sources */,
+				37FF5DA41EF1968000437F97 /* AddExerciseTableViewController.swift in Sources */,
 				3753170D1EDC634900878804 /* AppDelegate.swift in Sources */,
+				37F3A9F91EE570DE00855E31 /* ExerciseTableViewCell.swift in Sources */,
+				377770301EEEBA230025B483 /* Model.xcdatamodeld in Sources */,
+				373F41701EEF45B1004E0CE9 /* ModelClasses.swift in Sources */,
+				3777702D1EEAA1DF0025B483 /* FetchedResultsTableViewController.swift in Sources */,
+				37FF5DA21EF182DB00437F97 /* Date.swift in Sources */,
+				37F3A9F31EE5707D00855E31 /* TrainingsTableViewController.swift in Sources */,
+				37FF5DA61EF1C79B00437F97 /* SetsTableViewController.swift in Sources */,
+				37F3A9F51EE5709A00855E31 /* ExercisesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +591,7 @@
 				375317361EDC634900878804 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		375317371EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBroTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +600,7 @@
 				375317391EDC634900878804 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3753173A1EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBroUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,17 +609,18 @@
 				3753173C1EDC634900878804 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		375317131EDC634900878804 /* LiftBro.xcdatamodeld */ = {
+		3777702E1EEEBA230025B483 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				375317141EDC634900878804 /* LiftBro.xcdatamodel */,
+				3777702F1EEEBA230025B483 /* Model.xcdatamodel */,
 			);
-			currentVersion = 375317141EDC634900878804 /* LiftBro.xcdatamodel */;
-			path = LiftBro.xcdatamodeld;
+			currentVersion = 3777702F1EEEBA230025B483 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
