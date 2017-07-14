@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class AddExerciseTableViewController: UITableViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,29 +22,59 @@ class AddExerciseTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    public var training : Training?
+    
+    public var exerciseCategories : [ExerciseCategory] {
+    
+            return AppDelegate.exerciseDict.map{
+
+                $0.key
+            }
+        
     }
+    
+    
+    public let container = AppDelegate.container
+    
+    public var context :  NSManagedObjectContext {
+        
+        return container.viewContext
+    }
+
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-       return Exercise.ExerciseDict.count
+        
+       return AppDelegate.exerciseDict.count
     
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-       return Exercise.ExerciseDict[Exercise.ExerciseList[section]]!.count    }
+       return AppDelegate.exerciseDict[exerciseCategories[section]]!.count
+    }
 
-    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerText = UILabel()
+        headerText.textColor = .black
+        headerText.font = UIFont(name: "Avenir-Book", size: 12.0)
+        headerText.textAlignment = .right
+        headerText.text = exerciseCategories[section].name
+        headerText.backgroundColor = tableView.backgroundColor
+        
+        return headerText
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "static exercise", for: indexPath)
         
-        cell.textLabel?.text = Exercise.ExerciseDict[Exercise.ExerciseList[indexPath.section]]?[indexPath.row]
+        cell.textLabel?.text = AppDelegate.exerciseDict[exerciseCategories[indexPath.section]]?[indexPath.row].name
+        
+        cell.tag = indexPath.section
         
         return cell
     }
@@ -50,7 +82,7 @@ class AddExerciseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         
-        return Exercise.ExerciseList[section]
+        return exerciseCategories[section].name
         
     }
 
@@ -89,14 +121,35 @@ class AddExerciseTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "Add New Set"{
+            
+            if let vcSet = segue.destination as? CreateSetViewController{
+            
+                let newExercise = Exercise(context: context)
+               
+                newExercise.training = self.training
+                
+                if let sourceCell = sender as? UITableViewCell{
+                
+                    newExercise.name = sourceCell.textLabel?.text
+                    newExercise.category = exerciseCategories[sourceCell.tag]
+                    newExercise.type = AppDelegate.exerciseDict[exerciseCategories[sourceCell.tag]]?.filter{$0.name == sourceCell.textLabel?.text}[0]
+                    
+                    vcSet.currentExercise = newExercise
+                    if exerciseCategories[sourceCell.tag].name == "Cardio" {
+                        
+                        vcSet.currentExercise?.isDurationExercise = true
+                    }
+                    vcSet.title = sourceCell.textLabel?.text
+                }
+            }
+        }
     }
-    */
-
 }

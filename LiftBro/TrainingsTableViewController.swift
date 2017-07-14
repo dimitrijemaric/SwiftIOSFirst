@@ -11,88 +11,204 @@ import CoreData
 
 class TrainingsTableViewController: FetchedResultsTableViewController {
 
+    let defaults = UserDefaults.standard
+       let container = AppDelegate.container
+    let context = AppDelegate.container.viewContext
+    static var todaysTraining : Training?
+    static var currentColor: UIColor?
+
+    var firstLoad = false;
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        firstLoad = true
+       // deleteData()
+        
+       if !areExercisesImported() {
+        
+            importInitialExercises()
+       }
+        getAllExercisesfromRepository()
+        getOrCreateTodaysTraining()
         updateUI()
-        print("viewdidload")
-     // Uncomment the following line to preserve selection between presentations
+     
+             // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
     }
-
+    
+    func getOrCreateTodaysTraining()->(){
+    
+        guard TrainingsTableViewController.todaysTraining != nil else {
+            
+            let request: NSFetchRequest<Training> = Training.fetchRequest()
+            request.predicate = NSPredicate(format: "(%@ < date) AND (date <= %@)", argumentArray: [Calendar.current.startOfDay(for: Date()), Date()])
+            let trainings = try? context.fetch(request)
+            
+            if trainings?.count == 0 {
+        
+                TrainingsTableViewController.todaysTraining = Training(context:context)
+                TrainingsTableViewController.todaysTraining?.date = Date() as NSDate //Date.randomWithinDaysBeforeToday(5) as NSDate?
+            }
+            else {
+        
+                TrainingsTableViewController.todaysTraining = (trainings?[0])! as Training
+            }
+            return
+        }
+    }
+    
+    func getAllExercisesfromRepository() -> (){
+    
+        guard AppDelegate.exerciseDict.count > 0 else {
+            
+            let request : NSFetchRequest<ExerciseCategory> = ExerciseCategory.fetchRequest()
+            let categories = try? context.fetch(request)
+        
+            for item in categories!{
+        
+                let request : NSFetchRequest<ExerciseType> = ExerciseType.fetchRequest()
+                request.predicate = NSPredicate(format: "category = %@", item)
+                let types = try? context.fetch(request)
+                AppDelegate.exerciseDict[item] = types
+            }
+            return
+        }
+    }
+    func deleteData() -> (){
+    
+        let request : NSFetchRequest<Training> = Training.fetchRequest()
+        let categories = try? context.fetch(request)
+        
+        for item in categories!{
+        
+           context.delete(item)
+            try? context.save()
+        }
+    }
+    
+    func areExercisesImported () -> Bool{
+        
+        if defaults.string(forKey: "areExercisesImported") != nil{
+            
+            return true
+        }
+        return false
+    }
+    
+    func importInitialExercises ()->() {
+        
+        let url = Bundle.main.url(forResource: "ExerciseInitial", withExtension: "json")
+        let data = try? Data(contentsOf: url!)
+        
+        let initialExercises = try? JSONSerialization.jsonObject(with: data!) as! [String:[String]]
+        for exercise in initialExercises!{
+            
+            let category = ExerciseCategory(context: context)
+            category.name = exercise.key
+            
+            for item in exercise.value{
+            
+                let type = ExerciseType(context: context)
+                type.name = item
+                type.category = category
+            }
+        }
+        
+        try? context.save()
+        defaults.set(true, forKey: "areExercisesImported")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
-       updateUI()
-        print("viewwillload")
+        if firstLoad == false {
+            
+            updateUI()
+        }
+        firstLoad = false
     }
     
     
-    
-    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
-    
     fileprivate var fetchedResultsController: NSFetchedResultsController<Training>?
     
-    private func updateUI()
-    {   if let context = container?.viewContext {
+    fileprivate func updateUI(){
+        
         let request: NSFetchRequest<Training> = Training.fetchRequest()
-        let selector = #selector(NSString.caseInsensitiveCompare(_:))
+        let selector = #selector(NSDate.compare(_:))
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false, selector: selector)]
         request.fetchLimit = 10
+        request.predicate = NSPredicate(format: "exercises.@count > 0")
         fetchedResultsController = NSFetchedResultsController<Training>(
+            
             fetchRequest: request,
             managedObjectContext: context,
             sectionNameKeyPath: "month",
             cacheName: nil
         )
         try? fetchedResultsController?.performFetch()
-        
-        
+            
         tableView.reloadData()
-        }
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "training", for: indexPath)
         if let training = fetchedResultsController?.object(at: indexPath) {
+           
+            
             cell.detailTextLabel?.text =  training.getUserFriendlydate()
-            cell.textLabel?.text = training.getAllExerciceTypes()
+            cell.textLabel?.text = training.getAllExerciceCategories()
+            TrainingsTableViewController.currentColor = cell.backgroundColor
+            
         }
         return cell
     }
 
+    
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+        let headerText = UILabel()
+        headerText.textColor = .black
+        headerText.font = UIFont(name: "Avenir-Book", size: 12.0)
+        headerText.textAlignment = .right
+        headerText.text = fetchedResultsController?.sections?[section].name
+        headerText.backgroundColor = tableView.backgroundColor
+
+        return headerText
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "New Training" {
-            if let VC = segue.destination as? ExercisesTableViewController {
+            
+            if let VC = segue.destination as? AddExerciseTableViewController {
                     
-                VC.training = Training(context: (container?.viewContext)!)
-                VC.training?.date = Date.random() as NSDate?
-                VC.isNewTraining = true
-               
-                        //try? container?.viewContext.save()
-                 
-                           }
+                VC.training = TrainingsTableViewController.todaysTraining
+            }
         }
         
         if segue.identifier == "Existing Training" {
+            
             if let VC = segue.destination as? ExercisesTableViewController {
-                
                 
                 if let cell = sender as? UITableViewCell{
                     
                     let indexPath = tableView.indexPath(for: cell)
-                    VC.training = fetchedResultsController?.object(at: indexPath!)}
+                    let currentTraining = (fetchedResultsController?.object(at: indexPath!))! as Training
+                    VC.training = currentTraining
+                    VC.title = currentTraining.getUserFriendlydate()
+                    
+                }
             }
         }
-
-        
-        
-        
     }
     
     
@@ -108,6 +224,7 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection sectionIndex: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        
         return (fetchedResultsController?.sections![sectionIndex].numberOfObjects)!
     }
 

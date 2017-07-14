@@ -23,4 +23,8 @@ class TrainingTableViewCell: UITableViewCell {
     @IBOutlet weak var trainingTitle: UILabel!
 
     @IBOutlet weak var trainingDetail: UILabel!
+    
+    
+    
+    
 }

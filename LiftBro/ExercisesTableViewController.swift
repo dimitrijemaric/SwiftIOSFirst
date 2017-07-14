@@ -12,23 +12,32 @@ import CoreData
 class ExercisesTableViewController: FetchedResultsTableViewController {
 
     override func viewDidLoad() {
+      
         super.viewDidLoad()
-            updateUI()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        updateUI()
+    }
+    
+    @IBOutlet weak var cloneTrainingButton: UIBarButtonItem!
+    var container: NSPersistentContainer? = AppDelegate.container
+    var context = AppDelegate.container.viewContext
+    
+   
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<Exercise>?
     
     public var training : Training? {
     
         didSet{
-            
+            if training?.date as! Date > Calendar.current.startOfDay(for: Date()){
+                cloneTrainingButton.isEnabled = false
+            }
+          
             updateUI()
         }
         
@@ -39,13 +48,13 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
     {   if let context = container?.viewContext {
         let request: NSFetchRequest<Exercise> = Exercise.fetchRequest()
         let selector = #selector(NSString.caseInsensitiveCompare(_:))
-        request.sortDescriptors = [NSSortDescriptor(key: "type", ascending: false, selector: selector)]
+        request.sortDescriptors = [NSSortDescriptor(key: "category.name", ascending: false, selector: selector)]
         request.predicate = NSPredicate(format: "training = %@", training!)
         request.fetchLimit = 40
         fetchedResultsController = NSFetchedResultsController<Exercise>(
             fetchRequest: request,
             managedObjectContext: context,
-            sectionNameKeyPath: "type",
+            sectionNameKeyPath: "category.name",
             cacheName: nil
         )
         try? fetchedResultsController?.performFetch()
@@ -82,21 +91,62 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
         
     }
 
+    var exercises : [Exercise] = []
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "training exercise", for: indexPath)
-
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        if let exercise = fetchedResultsController?.object(at: indexPath) {
-             cell.textLabel?.text = exercise.name
-            cell.detailTextLabel?.text = "Volume: " + String(exercise.getExerciseVolume())
-        }
-
-       
         
-        return cell
+        
+        let headerText = UILabel()
+        headerText.textColor = .black
+        headerText.font = UIFont(name: "Avenir-Book", size: 12.0)
+        headerText.textAlignment = .right
+        headerText.text = fetchedResultsController?.sections?[section].name
+        headerText.backgroundColor = tableView.backgroundColor
+        
+        
+        return headerText
     }
     
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "training exercise", for: indexPath)
+        if let exercise = fetchedResultsController?.object(at: indexPath) {
+            
+            /*cell.textLabel?.text = exercise.type?.name
+            let volume = String(exercise.getExerciseVolume())
+            cell.detailTextLabel?.text = "Volume: \(volume)kg"*/
+           
+            exercises.append(exercise)
+            
+            if let exerciseCell = cell as? ExerciseTableViewCell{
+            
+                exerciseCell.exercise = exercise
+                exerciseCell.tag = exercises.index(of: exercise)!
+                
+                if (!anySetPerformed(for: exercise)){
+                    
+                    exerciseCell.backgroundColor = self.navigationController?.navigationBar.barTintColor
+                }
+                else {
+                    
+                    exerciseCell.backgroundColor = TrainingsTableViewController.currentColor
+                }
+            }
+            
+            
+        }
+        return cell
+    }
+    func anySetPerformed(for exercise: Exercise)->Bool{
+    
+        let request : NSFetchRequest<ExerciseSet> = ExerciseSet.fetchRequest()
+        request.predicate = NSPredicate(format: "exercise=%@", exercise)
+        let results = try? context.fetch(request)
+        if (results?.count)!>0 {return true}
+        else {return false}
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -133,14 +183,57 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "Show All Sets"{
+            
+            if let vcSet = segue.destination as? SetsTableViewController{
+                
+                if let sourceCell = sender as? UITableViewCell{
+                    
+                    vcSet.sets = Array((exercises[sourceCell.tag].sets)! as! Set<ExerciseSet>)
+                }
+            }
+        }
+        
+        else if segue.identifier == "Add Exercise To Training"{
+        
+            if let vcEx = segue.destination as? AddExerciseTableViewController{
+            
+                vcEx.training = self.training
+            }
+        }
+        
+        
+        
+        else if segue.identifier == "Add Set To Exercise"{
+        
+            if let vcSet = segue.destination as? CreateSetViewController{
+            
+                if let sourceCell = sender as? UITableViewCell{
+                    
+                    vcSet.currentExercise = exercises[sourceCell.tag]
+                }
+
+            }
+        }
+        
+        else if segue.identifier == "Clone Training"{
+        
+            if let vcClone = segue.destination as? CloneTrainingTableViewController{
+            
+                vcClone.exercisesToClone = exercises
+            }
+                
+        }
+    }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
 
 }

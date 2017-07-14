@@ -20,5 +20,29 @@ class ExerciseTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
+    var exercise : Exercise? {
+    
+        didSet{
+        
+            exerciseLabel.text = exercise?.type?.name
+            let volume = String(exercise!.getExerciseVolume())
+            volumeLabel.text = "Volume: \(volume)kg"
+            let sets = (exercise?.sets)!
+            let setsMapped = sets.map{set in
+            
+                    return "\((set as! ExerciseSet).reps)x\((set as! ExerciseSet).weight)kg"
+            }
+            setsLabel.text = setsMapped.count > 0 ? setsMapped.joined(separator: ", ") : "No sets performed."
+        }
+    }
+    
+    @IBOutlet weak var exerciseLabel: UILabel!
+    
+    
+    @IBOutlet weak var volumeLabel: UILabel!
+    
 
+    @IBOutlet weak var setsLabel: UILabel!
 }

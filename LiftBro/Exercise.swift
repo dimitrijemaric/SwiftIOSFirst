@@ -34,7 +34,7 @@ public class Exercise : NSManagedObject
         return Double(sum)
     }
     
-    
+    var isDurationExercise = false
 }
 
 public enum ExerciseTypes

@@ -11,4 +11,5 @@ import CoreData
 
 public class ExerciseType : NSManagedObject{}
 public class ExerciseCategory : NSManagedObject{}
-public class ExerciseSet : NSManagedObject {}
+
+
