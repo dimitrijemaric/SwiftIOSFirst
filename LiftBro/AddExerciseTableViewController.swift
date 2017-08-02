@@ -20,19 +20,14 @@ class AddExerciseTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
 
     public var training : Training?
     
-    public var exerciseCategories : [ExerciseCategory] {
     
-            return AppDelegate.exerciseDict.map{
-
-                $0.key
-            }
-        
-    }
-    
+    var selectedCellcolor : UIColor?
     
     public let container = AppDelegate.container
     
@@ -50,7 +45,9 @@ class AddExerciseTableViewController: UITableViewController {
        return AppDelegate.exerciseDict.count
     
     }
-
+    let exerciseCategories = AppDelegate.exerciseCategories
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
        return AppDelegate.exerciseDict[exerciseCategories[section]]!.count
@@ -67,7 +64,36 @@ class AddExerciseTableViewController: UITableViewController {
         
         return headerText
     }
+    
+    
+    var chosenExercises : [Exercise] = []
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "static exercise", for: indexPath)
 
+        cell.backgroundColor = selectedCellcolor
+        cell.accessoryType = .checkmark
+        
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        cell.textLabel?.text = AppDelegate.exerciseDict[exerciseCategories[indexPath.section]]?[indexPath.row].name
+        
+        cell.tag = indexPath.section
+        
+        let type = ExerciseType.Retrieve(from: (cell.textLabel?.text)!)
+        
+        if !(training?.isExerciseAlreadyAddedInTraining(type))!{
+            
+            let exercise = Exercise(context:context)
+            exercise.type = type
+            exercise.category = type.category
+            exercise.training = training
+            chosenExercises.append(exercise)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "static exercise", for: indexPath)
@@ -81,9 +107,7 @@ class AddExerciseTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        
         return exerciseCategories[section].name
-        
     }
 
     /*
@@ -126,7 +150,22 @@ class AddExerciseTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
+    var selectedCells : [String] = []
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if segue.identifier == "Add Exercises To Training"{
+        
+            if let vcExs = segue.destination as? ExercisesTableViewController{
+            
+                try? context.save()
+                
+                vcExs.exercises = chosenExercises
+                vcExs.training = self.training
+            }
+        }
         
         if segue.identifier == "Add New Set"{
             
@@ -151,5 +190,6 @@ class AddExerciseTableViewController: UITableViewController {
                 }
             }
         }
+       
     }
 }

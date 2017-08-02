@@ -18,6 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var exerciseDict : [ExerciseCategory:[ExerciseType]] = [:]
 
     
+    static var exerciseCategories : [ExerciseCategory] {
+        
+        return AppDelegate.exerciseDict.map{
+            
+            $0.key
+        }
+        
+    }
+    
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

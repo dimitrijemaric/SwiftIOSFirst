@@ -19,11 +19,56 @@ class CloneTrainingTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    @IBAction func cloneTraining(_ sender: UIBarButtonItem) {
+        
+        var createdExercises : [Exercise] = []
+        
+        training = TrainingsTableViewController.todaysTraining
+        
+        for ex in CloneTrainingTableViewController.chosenExercises{
+            
+            if ex.value == true && !training!.isExerciseAlreadyAddedInTraining(ex.key.type!){
+                
+                let exercise = Exercise(context: context)
+                exercise.training = training
+                exercise.type = ex.key.type
+                exercise.category = ex.key.category
+                createdExercises.append(exercise)
+            }
+        }
+        try? context.save()
+        
+        
+        for vc in (self.navigationController?.viewControllers)!{
+        
+            if vc is ExercisesTableViewController{
+            
+                if let vcEx = vc as? ExercisesTableViewController{
+                
+                    vcEx.training = self.training
+                    vcEx.exercises = createdExercises
+                }
+            }
+        }
+        self.navigationController?.popViewController(animated: false)
+        
+        
+    }
+    @IBAction func cancelCloning(_ sender: UIBarButtonItem) {
+        
+        if let nc = self.navigationController{
+            
+            nc.popViewController(animated: false)
+        }
+    }
     let container = AppDelegate.container
     let context = AppDelegate.container.viewContext
 
     var training : Training?
     static var chosenExercises : [Exercise:Bool] = [:]
+    
+    
     var exercisesToClone:[Exercise]? {
     
         didSet{
@@ -35,33 +80,14 @@ class CloneTrainingTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func switchMoved(_ sender: UISwitch, forEvent event: UIEvent) {
-        
-        
-        
-    }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func CloneTraining(_ sender: UIBarButtonItem) {
-        
-        for ex in CloneTrainingTableViewController.chosenExercises{
-        
-            if ex.value == true{
-                
-                let exercise = Exercise(context: context)
-                exercise.training = self.training
-                exercise.type = ex.key.type
-                exercise.category = ex.key.category
-            }
-        }
-        try? context.save()
-    }
-    
-    @IBAction func CancelCloningTraining(_ sender: UIBarButtonItem) {
-    }
+   
+ 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,15 +157,15 @@ class CloneTrainingTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Back To Exercise List"{
         
-            if let vcEx = segue.destination as?ExercisesTableViewController{
+            if let vcEx = segue.destination as? ExercisesTableViewController{
             
                 var createdExercises : [Exercise] = []
-              /*  training = Training(context:context)
-                training?.date = Date() as NSDate?*/
+                        
                 training = TrainingsTableViewController.todaysTraining
+                
                 for ex in CloneTrainingTableViewController.chosenExercises{
                     
-                    if ex.value == true{
+                    if ex.value == true && !training!.isExerciseAlreadyAddedInTraining(ex.key.type!){
                         
                         let exercise = Exercise(context: context)
                         exercise.training = training

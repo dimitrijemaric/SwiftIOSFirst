@@ -23,15 +23,20 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
         
         super.viewDidLoad()
         
+        defaults.set(2.5, forKey: "weightIncrement")
+        defaults.set(1.0, forKey: "durationIncrement")
+        defaults.set(1, forKey: "repsIncrement")
+        defaults.set("kg", forKey:"measureUnit")
         firstLoad = true
-       // deleteData()
+    //   deleteData()
         
        if !areExercisesImported() {
         
             importInitialExercises()
        }
-        getAllExercisesfromRepository()
+        TrainingsTableViewController.getAllExercisesfromRepository()
         getOrCreateTodaysTraining()
+        //deleteData()
         updateUI()
      
              // Uncomment the following line to preserve selection between presentations
@@ -63,18 +68,18 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
         }
     }
     
-    func getAllExercisesfromRepository() -> (){
+    class func getAllExercisesfromRepository() -> (){
     
         guard AppDelegate.exerciseDict.count > 0 else {
             
             let request : NSFetchRequest<ExerciseCategory> = ExerciseCategory.fetchRequest()
-            let categories = try? context.fetch(request)
+            let categories = try? AppDelegate.container.viewContext.fetch(request)
         
             for item in categories!{
         
                 let request : NSFetchRequest<ExerciseType> = ExerciseType.fetchRequest()
                 request.predicate = NSPredicate(format: "category = %@", item)
-                let types = try? context.fetch(request)
+                let types = try? AppDelegate.container.viewContext.fetch(request)
                 AppDelegate.exerciseDict[item] = types
             }
             return
@@ -82,7 +87,8 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
     }
     func deleteData() -> (){
     
-        let request : NSFetchRequest<Training> = Training.fetchRequest()
+        let request : NSFetchRequest<Exercise> = Exercise.fetchRequest()
+        request.predicate = NSPredicate(format: "training=%@", TrainingsTableViewController.todaysTraining!)
         let categories = try? context.fetch(request)
         
         for item in categories!{
@@ -116,12 +122,23 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
             
                 let type = ExerciseType(context: context)
                 type.name = item
+                if category.name == "Cardio"{
+                
+                    type.hasDuration = true
+                }
+                else {
+                    
+                    type.hasDuration = false
+                }
                 type.category = category
             }
         }
         
         try? context.save()
         defaults.set(true, forKey: "areExercisesImported")
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -160,13 +177,16 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "training", for: indexPath)
+        
         if let training = fetchedResultsController?.object(at: indexPath) {
-           
             
-            cell.detailTextLabel?.text =  training.getUserFriendlydate()
-            cell.textLabel?.text = training.getAllExerciceCategories()
-            TrainingsTableViewController.currentColor = cell.backgroundColor
+            if let trainingCell = cell as? TrainingTableViewCell{
             
+                trainingCell.trainingDetail.text =  training.getUserFriendlydate()
+                trainingCell.trainingTitle.text = training.getAllExerciceCategories()
+            
+                TrainingsTableViewController.currentColor = trainingCell.backgroundColor
+            }
         }
         return cell
     }
@@ -192,6 +212,12 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
             if let VC = segue.destination as? AddExerciseTableViewController {
                     
                 VC.training = TrainingsTableViewController.todaysTraining
+                
+                if let cell = sender as? UITableViewCell{
+                
+                    VC.selectedCellcolor = cell.backgroundColor
+                }
+                //VC.navigationItem.hidesBackButton = true
             }
         }
         
@@ -230,9 +256,7 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-     
         return fetchedResultsController?.sections?[section].name
-        
     
     }
     

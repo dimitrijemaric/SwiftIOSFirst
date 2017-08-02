@@ -16,6 +16,10 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
         super.viewDidLoad()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewUpdated = false
+    }
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -23,6 +27,12 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
         updateUI()
     }
     
+    var viewUpdated = false
+    
+    @IBAction func startTrainingCloning(_ sender: UIBarButtonItem) {
+        
+        self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "clone training"))!, animated: false)
+    }
     @IBOutlet weak var cloneTrainingButton: UIBarButtonItem!
     var container: NSPersistentContainer? = AppDelegate.container
     var context = AppDelegate.container.viewContext
@@ -38,29 +48,36 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
                 cloneTrainingButton.isEnabled = false
             }
           
-            updateUI()
+          updateUI()
         }
         
     }
     public var isNewTraining : Bool = false
     
-    private func updateUI()
-    {   if let context = container?.viewContext {
-        let request: NSFetchRequest<Exercise> = Exercise.fetchRequest()
-        let selector = #selector(NSString.caseInsensitiveCompare(_:))
-        request.sortDescriptors = [NSSortDescriptor(key: "category.name", ascending: false, selector: selector)]
-        request.predicate = NSPredicate(format: "training = %@", training!)
-        request.fetchLimit = 40
-        fetchedResultsController = NSFetchedResultsController<Exercise>(
-            fetchRequest: request,
-            managedObjectContext: context,
-            sectionNameKeyPath: "category.name",
-            cacheName: nil
+    private func updateUI() {
+        
+        if viewUpdated == false{
+        
+            viewUpdated = true
+            if let context = container?.viewContext {
+                
+                let request: NSFetchRequest<Exercise> = Exercise.fetchRequest()
+                let selector = #selector(NSString.caseInsensitiveCompare(_:))
+                request.sortDescriptors = [NSSortDescriptor(key: "category.name", ascending: false, selector: selector)]
+                request.predicate = NSPredicate(format: "training = %@", training!)
+                request.fetchLimit = 40
+                fetchedResultsController = NSFetchedResultsController<Exercise>(
+                    
+                    fetchRequest: request,
+                    managedObjectContext: context,
+                    sectionNameKeyPath: "category.name",
+                    cacheName: nil
         )
+                
         try? fetchedResultsController?.performFetch()
         
-        
         tableView.reloadData()
+        }
         }
     }
 
@@ -74,6 +91,8 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        
+        let test = (fetchedResultsController?.sections!.count)!
         
         return (fetchedResultsController?.sections!.count)!
     }
@@ -94,8 +113,6 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
     var exercises : [Exercise] = []
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        
         
         let headerText = UILabel()
         headerText.textColor = .black
@@ -200,7 +217,7 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
             }
         }
         
-        else if segue.identifier == "Add Exercise To Training"{
+        else if segue.identifier == "Add Exercises To Training"{
         
             if let vcEx = segue.destination as? AddExerciseTableViewController{
             

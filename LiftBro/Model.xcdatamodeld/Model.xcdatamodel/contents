@@ -21,6 +21,7 @@
         <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="sets" inverseEntity="Exercise" syncable="YES"/>
     </entity>
     <entity name="ExerciseType" representedClassName=".ExerciseType" syncable="YES" codeGenerationType="category">
+        <attribute name="hasDuration" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExerciseCategory" inverseName="types" inverseEntity="ExerciseCategory" syncable="YES"/>
         <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="type" inverseEntity="Exercise" syncable="YES"/>
@@ -33,7 +34,7 @@
         <element name="Exercise" positionX="315" positionY="-189" width="128" height="135"/>
         <element name="ExerciseCategory" positionX="268" positionY="150" width="128" height="75"/>
         <element name="ExerciseSet" positionX="-18" positionY="24" width="128" height="135"/>
-        <element name="ExerciseType" positionX="-126" positionY="-144" width="128" height="90"/>
+        <element name="ExerciseType" positionX="-126" positionY="-144" width="128" height="105"/>
         <element name="Training" positionX="-90" positionY="-288" width="128" height="75"/>
     </elements>
 </model>

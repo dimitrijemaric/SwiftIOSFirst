@@ -16,6 +16,7 @@ public class Training : NSManagedObject {
     
     public let months : [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Nov", "Dec"]
     
+    let context = AppDelegate.container.viewContext
     
     public var month : String
     {
@@ -27,6 +28,29 @@ public class Training : NSManagedObject {
     
     }
 
+    
+    public func isExerciseAlreadyAddedInTraining(_ type: ExerciseType) -> Bool{
+        
+        let alltypesInCurrentTraining = self.retrieveExercises().map{$0.type}
+        
+        let typeOccurences = alltypesInCurrentTraining.filter{$0 == type}
+        
+        if typeOccurences.count == 0{
+            
+            return false
+        }
+        return true
+    }
+    
+    public func retrieveExercises() -> [Exercise]{
+    
+        let request :NSFetchRequest<Exercise> = Exercise.fetchRequest()
+        request.predicate = NSPredicate(format: "training=%@", self)
+        let exs = try? context.fetch(request)
+        return exs!
+    }
+    
+    
     public func getUserFriendlydate() -> String {
     
         let components = Calendar.current.compare(date as! Date, to: Date(), toGranularity: .day)
@@ -63,20 +87,20 @@ public class Training : NSManagedObject {
         
         return dateFormatter.string(from: date as! Date)    }
     
-    public func removeDuplicates (from sourceList: [String]) -> [String]{
+    public func removeDuplicates<T: Hashable> (from sourceList: Array<T>) -> Set<T> {
     
-        var resultList: [String] = []
-        for item in sourceList{
-        
-            if !resultList.contains(item){
+        var resultList = Set<T>()
             
-                resultList.append(item)
-            }
+        for item in sourceList{
+                
+            resultList.insert(item)
         }
+        
        return resultList
     }
     
     public func getAllExerciceCategories()->String{
+        
         if exercises != nil{
             
             let exerciseSet = exercises as! Set<Exercise>
@@ -84,11 +108,12 @@ public class Training : NSManagedObject {
                 
                 ($0.category?.name)!
             }
-        
-        return removeDuplicates(from: exercise_categories).joined(separator: ",")
+            
+            return removeDuplicates(from: exercise_categories).joined(separator: ",")
         }
+            
         else {return "No exercises performed yet."}
-}
+    }
 
 }
 
