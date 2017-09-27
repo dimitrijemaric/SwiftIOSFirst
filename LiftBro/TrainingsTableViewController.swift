@@ -8,27 +8,54 @@
 
 import UIKit
 import CoreData
+import EasyTipView
 
-class TrainingsTableViewController: FetchedResultsTableViewController {
+class TrainingsTableViewController: FetchedResultsTableViewController, EasyTipViewDelegate {
 
     let defaults = UserDefaults.standard
-       let container = AppDelegate.container
+    let container = AppDelegate.container
     let context = AppDelegate.container.viewContext
+    var addButtonDefaultAction : Selector? = nil
     static var todaysTraining : Training?
     static var currentColor: UIColor?
 
+    
+    
     var firstLoad = false;
     
     override func viewDidLoad() {
         
-        super.viewDidLoad()
         
-        defaults.set(2.5, forKey: "weightIncrement")
-        defaults.set(1.0, forKey: "durationIncrement")
-        defaults.set(1, forKey: "repsIncrement")
-        defaults.set("kg", forKey:"measureUnit")
+        
+        
+        
+        
+        super.viewDidLoad()
+            if !defaults.bool(forKey: "Settings Populated"){
+            
+            defaults.set(2.5, forKey: "weightIncrement")
+            defaults.set(1.0, forKey: "durationIncrement")
+            defaults.set(1, forKey: "repsIncrement")
+            defaults.set("kg", forKey:"measureUnit")
+            defaults.set(true, forKey: "Settings Populated")
+        }
         firstLoad = true
-    //   deleteData()
+        
+        addButtonDefaultAction = self.navigationItem.rightBarButtonItem?.action
+        var preferences = EasyTipView.Preferences()
+        preferences.drawing.font = UIFont(name: "Avenir-Book", size: 12.0)!
+        preferences.drawing.foregroundColor = tableView.separatorColor!
+        preferences.drawing.backgroundColor = tableView.sectionIndexColor!
+        preferences.drawing.arrowPosition = EasyTipView.ArrowPosition.top
+        
+        /*
+         * Optionally you can make these preferences global for all future EasyTipViews
+         */
+        EasyTipView.globalPreferences = preferences
+       
+        EasyTipView.show(forItem: self.navigationItem.rightBarButtonItem!, text: "Start here by adding exercises for today's workout")
+        
+    // deleteData()
         
        if !areExercisesImported() {
         
@@ -107,6 +134,10 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
         return false
     }
     
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        
+    }
+    
     func importInitialExercises ()->() {
         
         let url = Bundle.main.url(forResource: "ExerciseInitial", withExtension: "json")
@@ -144,10 +175,13 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
         if firstLoad == false {
             
             updateUI()
+            
         }
+        
         firstLoad = false
     }
     
@@ -155,6 +189,9 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
     fileprivate var fetchedResultsController: NSFetchedResultsController<Training>?
     
     fileprivate func updateUI(){
+        
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: addButtonDefaultAction)
         
         let request: NSFetchRequest<Training> = Training.fetchRequest()
         let selector = #selector(NSDate.compare(_:))
@@ -209,19 +246,21 @@ class TrainingsTableViewController: FetchedResultsTableViewController {
         
         if segue.identifier == "New Training" {
             
-            if let VC = segue.destination as? AddExerciseTableViewController {
-                    
-                VC.training = TrainingsTableViewController.todaysTraining
+           if let vcAddNew = segue.destination as? AddExerciseTableViewController{
+            
+                vcAddNew.training = TrainingsTableViewController.todaysTraining
                 
                 if let cell = sender as? UITableViewCell{
                 
-                    VC.selectedCellcolor = cell.backgroundColor
+                    vcAddNew.selectedCellcolor = cell.backgroundColor
+                    vcAddNew.cameFromRoot = true
                 }
-                //VC.navigationItem.hidesBackButton = true
             }
         }
         
         if segue.identifier == "Existing Training" {
+            
+            
             
             if let VC = segue.destination as? ExercisesTableViewController {
                 

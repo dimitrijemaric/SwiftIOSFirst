@@ -22,6 +22,10 @@ class CreateExerciseTypeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        print("deinit create exercise")
+    }
+    
     var category = "" {
     
         didSet{
@@ -36,7 +40,7 @@ class CreateExerciseTypeViewController: UIViewController {
         }
     }
     
-    var exerciseCategory : ExerciseCategory?
+    weak var exerciseCategory : ExerciseCategory?
     
     let container = AppDelegate.container
     let context = AppDelegate.container.viewContext
@@ -44,6 +48,23 @@ class CreateExerciseTypeViewController: UIViewController {
     @IBOutlet weak var exerciseNameField: UITextField!
     @IBOutlet weak var durationSwitch: UISwitch!
     
+    @IBAction func saveNewExercise(_ sender: UIButton) {
+     
+        if (exerciseNameField.text != nil){
+            
+            let exerciseType = ExerciseType(context: context)
+            exerciseType.name = exerciseNameField.text
+            exerciseType.category = exerciseCategory
+            if durationSwitch.isOn{
+                
+                exerciseType.hasDuration = true
+            }
+            try? context.save()
+            AppDelegate.exerciseDict[exerciseCategory!]?.append(exerciseType)
+            
+            _ = self.navigationController?.popViewController(animated: false)
+        }
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

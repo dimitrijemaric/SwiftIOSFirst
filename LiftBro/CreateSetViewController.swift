@@ -13,11 +13,16 @@ import CoreData
 
 class CreateSetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
 
+    
+     let defaults = UserDefaults.standard
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        updateSetCreationView()
+        
         updateSetsTable()
+        updateTextFieldsVisibility()
+        
+        fetchedResultsController?.delegate = self
         repsField.delegate = self
         WeightField.delegate = self
         durationField.delegate = self
@@ -25,9 +30,14 @@ class CreateSetViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    
+    
     var noteFieldLimit = 15
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        //text fields validation
         
         let enteredCharSet = CharacterSet(charactersIn: string)
         let allowedChars = CharacterSet.decimalDigits
@@ -54,17 +64,41 @@ class CreateSetViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     @IBAction func repsFieldChanged(_ sender: UITextField) {
         
-                repsStepper.value = Double(sender.text!)!
+        if sender.text != nil {
+            
+            repsStepper.value = Double(sender.text!)!
+            
+        }
+        else {
+            
+            repsStepper.value = 0.0
+        }
+        
             }
    
     @IBAction func durationFieldChanged(_ sender: UITextField) {
-        
-        durationStepper.value = Double(sender.text!)!
-    }
+        if sender.text != nil {
+            
+            durationStepper.value = Double(sender.text!)!
+
+        }
+        else {
+            
+            durationStepper.value = 0.0
+        }
+
+            }
     
     @IBAction func weightFieldChanged(_ sender: UITextField) {
         
-        weightStepper.value = Double(sender.text!)!
+        if sender.text != nil {
+            
+            weightStepper.value = Double(sender.text!)!
+        }
+        else {
+        
+            weightStepper.value = 0.0
+        }
     }
     
     @IBOutlet weak var repsStepper: UIStepper!
@@ -106,17 +140,26 @@ class CreateSetViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var currentExercise: Exercise?{
         
-        didSet{self.title = currentExercise!.name}
+        didSet{self.title = currentExercise!.type?.name}
     }
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<ExerciseSet>?
+
     
-    func updateSetCreationView(){
+    func updateTextFieldsVisibility(){
     
-        if (currentExercise?.isDurationExercise == true) {
+        let stackView = view.subviews[0]
+        let repsView = stackView.subviews[0]
+        let weightView = stackView.subviews[1]
+        let durationView = stackView.subviews[2]
+        if currentExercise?.type?.hasDuration == true{
             
-         
+            repsView.isHidden = true
+            weightView.isHidden = true
+            durationView.isHidden = false
         }
+
+        WeightField.placeholder = "0 " + defaults.string(forKey: "measureUnit")! + "s"
     }
     
     func updateSetsTable() {
@@ -124,11 +167,12 @@ class CreateSetViewController: UIViewController, UITableViewDelegate, UITableVie
         let request: NSFetchRequest<ExerciseSet> = ExerciseSet.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         request.predicate = NSPredicate(format: "exercise.type.name = %@", (currentExercise?.type?.name)!)
-        request.fetchLimit = 20
+       request.fetchLimit = 20
         fetchedResultsController = NSFetchedResultsController<ExerciseSet>(
             fetchRequest: request,
             managedObjectContext: context,
-            sectionNameKeyPath: "exercise.training.friendlyDate",
+            //sectionNameKeyPath: "exercise.training.friendlyDate",
+            sectionNameKeyPath: "friendlyDate",
             cacheName: nil
         )
         try? fetchedResultsController?.performFetch()
@@ -157,27 +201,51 @@ class CreateSetViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func SaveSet(_ sender: UIButton) {
         
-        
-        if repsField.text != nil && repsField.text != "" && Int16(repsField.text!)! > 0 {
-        
         let newSet = ExerciseSet(context: context)
-        newSet.weight = Double(WeightField.text!)!
-        newSet.reps = Int16(repsField.text!)!
-        newSet.level = noteField.text!
-        newSet.exercise = self.currentExercise
-        
-        if (isToday(date: (currentExercise?.training?.date)!)){
+        if noteField.text != nil{
+            
+            newSet.level = noteField.text!
+        }
+        if (!isToday(date: (currentExercise?.training?.date)!)){
             
             newSet.date = currentExercise?.training?.date
         }
+            
         else {
-        
+            
             newSet.date = Date() as NSDate?
         }
-        try? context.save()
-        print ("\(newSet.exercise?.training?.date)")
-        updateSetsTable()
+        newSet.exercise = self.currentExercise
+        
+        
+        if repsField.text != nil && repsField.text != "" && Int16(repsField.text!)! > 0 && currentExercise?.type?.hasDuration == false{
+        
+            guard WeightField.text != nil && currentExercise?.type?.hasDuration == false else {
+                
+                WeightField.text = "bw"
+                return
+            }
+            
+            newSet.weight = Double(WeightField.text!)!
+            newSet.reps = Int16(repsField.text!)!
+            
+            try? context.save()
+            //updateSetsTable()
         }
+            
+        else if currentExercise?.type?.hasDuration == true && durationField.text != nil && durationField.text != "" && Double(durationField.text!)! > 0{
+            
+            newSet.duration = Double(durationField.text!)!
+            try? context.save()
+            updateSetsTable()
+        }
+       
+        else{
+        
+            context.delete(newSet)
+        }
+     
+        
     }
 
     func isToday(date:NSDate) -> Bool{
@@ -207,10 +275,16 @@ class CreateSetViewController: UIViewController, UITableViewDelegate, UITableVie
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "Full History"{
+            
+            if let vcFullSet = segue.destination as? FullHistoryTableViewController{
+                
+                    vcFullSet.fetchedResultsController = fetchedResultsController
+                
+            }
+        }
     }
-    
     /*
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<Exercise>?
@@ -265,14 +339,13 @@ class CreateSetViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection sectionIndex: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return (fetchedResultsController?.sections![sectionIndex].numberOfObjects)!
+    
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         
         return fetchedResultsController?.sections?[section].name
-        
-        
     }
     
     
@@ -298,12 +371,23 @@ class CreateSetViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "exercise set", for: indexPath)
         if let set = fetchedResultsController?.object(at: indexPath){
+            if currentExercise?.type?.hasDuration == false{
+                
+                cell.textLabel?.text = "\(set.weight)" + defaults.string(forKey: "measureUnit")! + "s "  + "x \(set.reps)"
+                
+            }
+            else{
             
-            cell.textLabel?.text = "\(set.weight)kg x \(set.reps)"
+                cell.textLabel?.text = "\(set.duration) minutes"
+            }
             cell.detailTextLabel?.text = set.level ?? ""
         }
         return cell
     }
+    
+    
+    
+    
     
     
     //fetched results delegate methods

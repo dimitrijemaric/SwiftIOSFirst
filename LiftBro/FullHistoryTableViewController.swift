@@ -1,89 +1,101 @@
 //
-//  SettingsTableViewController.swift
+//  FullHistoryTableViewController.swift
 //  LiftBro
 //
-//  Created by Ari Gold on 7/25/17.
+//  Created by Ari Gold on 8/14/17.
 //  Copyright © 2017 Ari Gold. All rights reserved.
 //
 
 import UIKit
+import CoreData
 
-class SettingsTableViewController: UITableViewController, PassChosenUnitDelegate {
+class FullHistoryTableViewController: UITableViewController {
 
-    
-    
-    let defaults = UserDefaults.standard
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        weightIncrement.text = "\(defaults.double(forKey: "weightIncrement"))"
-        repsIncrement.text = "\(defaults.integer(forKey: "repsIncrement"))"
-        durationIncrement.text = "\(defaults.double(forKey: "durationIncrement"))"
-       unitLabel.text = "\(defaults.string(forKey: "measureUnit")!)"
-        
+        updateDataSource()
+        tableView.reloadData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    @IBOutlet weak var repsIncrement: UITextField!
-
-    @IBOutlet weak var unitLabel: UILabel!
     
-    @IBAction func weightIncrementChanged(_ sender: UITextField) {
-        defaults.set(Double(sender.text!), forKey: "weightIncrement")
+    deinit {
+        print("deinit fullhistory")
     }
     
-    @IBAction func repsIncrementChanged(_ sender: UITextField) {
-        defaults.set(Double(sender.text!), forKey: "repsIncrement")
-
-    }
-    @IBAction func durationIncrementChanged(_ sender: UITextField) {
-        defaults.set(Double(sender.text!), forKey: "durationIncrement")
-
-    }
+    let defaults = UserDefaults.standard
+    var isDurationExercise = false
     
-    @IBOutlet weak var weightIncrement: UITextField!
+   
+    weak var fetchedResultsController : NSFetchedResultsController<ExerciseSet>?
     
-    
-    @IBOutlet weak var durationIncrement: UITextField!
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+   
     // MARK: - Table view data source
 
+    
+    func updateDataSource(){
+    
+        fetchedResultsController?.fetchRequest.fetchLimit = 10000
+        try? fetchedResultsController?.performFetch()
+   
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+       
+        let sectionCount = (fetchedResultsController?.sections!.count)!
+        return sectionCount
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection sectionIndex: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return (fetchedResultsController?.sections![sectionIndex].numberOfObjects)!
+    }
+
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        
+           return fetchedResultsController?.sections?[section].name
+        
+        
     }
     
-    func didChose(measureUnit unit: String) {
-        unitLabel.text = unit
-        defaults.set(unit, forKey:"measureUnit")
-        tableView.reloadData()
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        
+        
+        let headerText = UILabel()
+        headerText.textColor = .black
+        headerText.font = UIFont(name: "Avenir-Book", size: 12.0)
+        headerText.textAlignment = .right
+        headerText.text = fetchedResultsController?.sections?[section].name
+        headerText.backgroundColor = tableView.backgroundColor
+        
+        
+        return headerText
     }
     
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "exercise set full", for: indexPath)
+        if let set = fetchedResultsController?.object(at: indexPath){
+            if isDurationExercise == false{
+                
+                cell.textLabel?.text = "\(set.weight)" + defaults.string(forKey: "measureUnit")! + "s "  + "x \(set.reps)"
+                
+            }
+            else{
+                
+                cell.textLabel?.text = "\(set.duration) minutes"
+            }
+            cell.detailTextLabel?.text = set.level ?? ""
+        }
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -120,29 +132,14 @@ class SettingsTableViewController: UITableViewController, PassChosenUnitDelegate
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        
-        if segue.identifier == "Choose Measure Unit"{
-        
-            if let vcMUnit = segue.destination as? MeasuringUnitTableViewController{
-            
-                vcMUnit.unitOptionDelegate = self
-                vcMUnit.navigationItem.hidesBackButton = true
-               
-                vcMUnit.modalPresentationStyle = .custom
-            }
-        }
-        
-        
-        
     }
-    
+    */
 
 }

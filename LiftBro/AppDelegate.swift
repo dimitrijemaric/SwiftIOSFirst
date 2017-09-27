@@ -26,7 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
     }
-    
+    class func removeDuplicates<T: Hashable> (from sourceList: Array<T>) -> Set<T> {
+        
+        var resultList = Set<T>()
+        
+        for item in sourceList{
+            
+            resultList.insert(item)
+        }
+        
+        return resultList
+    }
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

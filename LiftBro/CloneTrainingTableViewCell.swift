@@ -8,22 +8,34 @@
 
 import UIKit
 
+
+protocol ExerciseRemovedDelegate: class{
+
+    func didRemove(exercise: ExerciseType)
+}
+
 class CloneTrainingTableViewCell: UITableViewCell {
     
-    var exerciseName: Exercise? {
+    weak var exerciseName: ExerciseType? {
     
         didSet{
         
-            exerciseLabel.text = exerciseName?.type?.name
+            exerciseLabel.text = exerciseName?.name
         }
     }
+    
+    weak var exerciseDelegate: ExerciseRemovedDelegate?
+    
     
     @IBOutlet weak var exerciseLabel: UILabel!
 
     
     @IBAction func switchMoved(_ sender: UISwitch) {
         
-        CloneTrainingTableViewController.chosenExercises[exerciseName!] = sender.isOn
+        if !sender.isOn{
+        
+            exerciseDelegate?.didRemove(exercise: exerciseName!)
+        }
         
     }
 }

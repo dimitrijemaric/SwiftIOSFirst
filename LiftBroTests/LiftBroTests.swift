@@ -13,7 +13,7 @@ class LiftBroTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
@@ -22,6 +22,10 @@ class LiftBroTests: XCTestCase {
     }
     
     func testExample() {
+        
+        let training = Training()
+        training.date = Date() as NSDate?
+        _ = training.dateWithoutTime
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

@@ -31,9 +31,7 @@ public class Training : NSManagedObject {
     
     public func isExerciseAlreadyAddedInTraining(_ type: ExerciseType) -> Bool{
         
-        let alltypesInCurrentTraining = self.retrieveExercises().map{$0.type}
-        
-        let typeOccurences = alltypesInCurrentTraining.filter{$0 == type}
+        let typeOccurences = currentExerciseTypes.filter{$0 == type}
         
         if typeOccurences.count == 0{
             
@@ -42,7 +40,13 @@ public class Training : NSManagedObject {
         return true
     }
     
-    public func retrieveExercises() -> [Exercise]{
+    
+    var currentExerciseTypes : [ExerciseType]{
+    
+        return retrieveExercises().map{$0.type!}
+    }
+    
+    func retrieveExercises() -> [Exercise]{
     
         let request :NSFetchRequest<Exercise> = Exercise.fetchRequest()
         request.predicate = NSPredicate(format: "training=%@", self)
@@ -70,7 +74,9 @@ public class Training : NSManagedObject {
         /*(from: date as! Date, dateStyle: .short, timeStyle: .none)*/
         
     }
-
+       
+    
+    
     public var friendlyDate : String {
         
         let components = Calendar.current.compare(date as! Date, to: Date(), toGranularity: .day)
@@ -85,19 +91,10 @@ public class Training : NSManagedObject {
         dateFormatter.timeStyle = .none
         dateFormatter.dateStyle = .medium
         
-        return dateFormatter.string(from: date as! Date)    }
-    
-    public func removeDuplicates<T: Hashable> (from sourceList: Array<T>) -> Set<T> {
-    
-        var resultList = Set<T>()
-            
-        for item in sourceList{
-                
-            resultList.insert(item)
-        }
-        
-       return resultList
+        return dateFormatter.string(from: date as! Date)
     }
+    
+    
     
     public func getAllExerciceCategories()->String{
         
@@ -106,10 +103,14 @@ public class Training : NSManagedObject {
             let exerciseSet = exercises as! Set<Exercise>
             let exercise_categories : [String] = exerciseSet.map{
                 
-                ($0.category?.name)!
+                if ($0.category?.name != nil){
+                    
+                    return ($0.category?.name)!
+                }
+                return ""
             }
             
-            return removeDuplicates(from: exercise_categories).joined(separator: ",")
+            return AppDelegate.removeDuplicates(from: exercise_categories).joined(separator: ",")
         }
             
         else {return "No exercises performed yet."}

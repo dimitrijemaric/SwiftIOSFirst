@@ -24,19 +24,47 @@ class AddExerciseTableViewController: UITableViewController {
         
     }
 
-    public var training : Training?
     
     
-    var selectedCellcolor : UIColor?
-    
-    public let container = AppDelegate.container
-    
-    public var context :  NSManagedObjectContext {
-        
-        return container.viewContext
+    deinit {
+        print("deinit add")
     }
+    
+    @IBAction func addSelectedExercises(_ sender: UIBarButtonItem) {
+        
+        for ce in chosenExercises{
+            
+            if !(training?.isExerciseAlreadyAddedInTraining(ce))!{
+                    
+                let exercise = Exercise(context: context!)
+                exercise.type = ce
+                exercise.category = ce.category
+                exercise.training = training
+            }
+        }
+        
+        try? context?.save()
+        
+        if cameFromRoot{
+        
+            _ = self.navigationController?.popToRootViewController(animated: false)
+        }
+        else{
+        
+            _ = self.navigationController?.popViewController(animated: false)
+        }
+    
+    }
+    var cameFromRoot = false
+    
+    weak var training : Training?
 
 
+    weak var selectedCellcolor : UIColor?
+    
+    weak var context  = AppDelegate.container.viewContext
+
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,7 +94,7 @@ class AddExerciseTableViewController: UITableViewController {
     }
     
     
-    var chosenExercises : [Exercise] = []
+    var chosenExercises : [ExerciseType] = []
     
     
     
@@ -86,11 +114,7 @@ class AddExerciseTableViewController: UITableViewController {
         
         if !(training?.isExerciseAlreadyAddedInTraining(type))!{
             
-            let exercise = Exercise(context:context)
-            exercise.type = type
-            exercise.category = type.category
-            exercise.training = training
-            chosenExercises.append(exercise)
+            chosenExercises.append(type)
         }
     }
     
@@ -160,9 +184,16 @@ class AddExerciseTableViewController: UITableViewController {
         
             if let vcExs = segue.destination as? ExercisesTableViewController{
             
-                try? context.save()
+                for ce in chosenExercises{
                 
-                vcExs.exercises = chosenExercises
+                    let exercise = Exercise(context: context!)
+                    exercise.type = ce
+                    exercise.category = ce.category
+                    exercise.training = training
+                    vcExs.exercises.append(exercise)
+                }
+                
+                try? context?.save()
                 vcExs.training = self.training
             }
         }
@@ -171,7 +202,7 @@ class AddExerciseTableViewController: UITableViewController {
             
             if let vcSet = segue.destination as? CreateSetViewController{
             
-                let newExercise = Exercise(context: context)
+                let newExercise = Exercise(context: context!)
                
                 newExercise.training = self.training
                 

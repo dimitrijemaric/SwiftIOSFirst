@@ -15,6 +15,9 @@ class ExerciseTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    let defaults = UserDefaults.standard
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -27,14 +30,27 @@ class ExerciseTableViewCell: UITableViewCell {
         didSet{
         
             exerciseLabel.text = exercise?.type?.name
-            let volume = String(exercise!.getExerciseVolume())
-            volumeLabel.text = "Volume: \(volume)kg"
             let sets = (exercise?.sets)!
-            let setsMapped = sets.map{set in
+            var setsMapped : [String] = []
             
-                    return "\((set as! ExerciseSet).reps)x\((set as! ExerciseSet).weight)kg"
+            if exercise?.type?.hasDuration == false{
+                
+                let volume = String(exercise!.getExerciseVolume())
+                volumeLabel.text = "Volume: \(volume)" + defaults.string(forKey: "measureUnit")!
+                setsMapped = sets.map{set in
+            
+                    return "\((set as! ExerciseSet).reps)x\((set as! ExerciseSet).weight)" + defaults.string(forKey: "measureUnit")!
+                }
+            }
+            else {
+            
+                setsMapped = sets.map{set in
+                    
+                    return "\((set as! ExerciseSet).duration) minutes"
+                }
             }
             setsLabel.text = setsMapped.count > 0 ? setsMapped.joined(separator: ", ") : "No sets performed."
+
         }
     }
     

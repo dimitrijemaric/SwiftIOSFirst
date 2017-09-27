@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0796228DD2044584AD3BFAEB /* Pods_LiftBroTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D107272A4F22668176F700AD /* Pods_LiftBroTests.framework */; };
+		22C02AF327116C256B4BA552 /* Pods_LiftBroUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA27D2F6D01417E97E3BE44A /* Pods_LiftBroUITests.framework */; };
+		316EC6928E5DABA2DD8C5FA9 /* Pods_LiftBro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2924E7C9FFDCE1BE439B8D07 /* Pods_LiftBro.framework */; };
 		3709566F1F17A54100F203F7 /* NewExerciseTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709566E1F17A54100F203F7 /* NewExerciseTypeViewController.swift */; };
 		370F4CDC1F0FE6A500251CEF /* CloneTrainingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F4CDB1F0FE6A500251CEF /* CloneTrainingTableViewController.swift */; };
 		370F4CDE1F10D5E200251CEF /* CloneTrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F4CDD1F10D5E200251CEF /* CloneTrainingTableViewCell.swift */; };
 		3711D5AA1F13C1DA0016D5E6 /* ExerciseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3711D5A91F13C1DA0016D5E6 /* ExerciseSet.swift */; };
+		3722A1F71F424B4100D44ADD /* FullHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3722A1F61F424B4100D44ADD /* FullHistoryTableViewController.swift */; };
 		373F41701EEF45B1004E0CE9 /* ModelClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373F416F1EEF45B1004E0CE9 /* ModelClasses.swift */; };
 		374D89E21F18B17C00548BA7 /* ChooseCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D89E11F18B17C00548BA7 /* ChooseCategoryTableViewController.swift */; };
 		374D89E41F18B52D00548BA7 /* CreateExerciseTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D89E31F18B52D00548BA7 /* CreateExerciseTypeViewController.swift */; };
@@ -23,6 +27,7 @@
 		3777702D1EEAA1DF0025B483 /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777702C1EEAA1DF0025B483 /* FetchedResultsTableViewController.swift */; };
 		377770301EEEBA230025B483 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3777702E1EEEBA230025B483 /* Model.xcdatamodeld */; };
 		378DD6A31F27932C008963F5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DD6A21F27932C008963F5 /* SettingsTableViewController.swift */; };
+		37EDDCBD1F3377AA00E9A2F1 /* MeasuringUnitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDDCBC1F3377AA00E9A2F1 /* MeasuringUnitTableViewController.swift */; };
 		37F3A9F31EE5707D00855E31 /* TrainingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3A9F21EE5707D00855E31 /* TrainingsTableViewController.swift */; };
 		37F3A9F51EE5709A00855E31 /* ExercisesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3A9F41EE5709A00855E31 /* ExercisesTableViewController.swift */; };
 		37F3A9F71EE570C700855E31 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3A9F61EE570C700855E31 /* TrainingTableViewCell.swift */; };
@@ -54,10 +59,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2924E7C9FFDCE1BE439B8D07 /* Pods_LiftBro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiftBro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3709566E1F17A54100F203F7 /* NewExerciseTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExerciseTypeViewController.swift; sourceTree = "<group>"; };
 		370F4CDB1F0FE6A500251CEF /* CloneTrainingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloneTrainingTableViewController.swift; sourceTree = "<group>"; };
 		370F4CDD1F10D5E200251CEF /* CloneTrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloneTrainingTableViewCell.swift; sourceTree = "<group>"; };
 		3711D5A91F13C1DA0016D5E6 /* ExerciseSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseSet.swift; sourceTree = "<group>"; };
+		3722A1F61F424B4100D44ADD /* FullHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullHistoryTableViewController.swift; sourceTree = "<group>"; };
 		373F416F1EEF45B1004E0CE9 /* ModelClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelClasses.swift; sourceTree = "<group>"; };
 		374D89E11F18B17C00548BA7 /* ChooseCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCategoryTableViewController.swift; sourceTree = "<group>"; };
 		374D89E31F18B52D00548BA7 /* CreateExerciseTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateExerciseTypeViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +83,9 @@
 		3777702C1EEAA1DF0025B483 /* FetchedResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewController.swift; sourceTree = "<group>"; };
 		3777702F1EEEBA230025B483 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		378DD6A21F27932C008963F5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		37DA67F11F4F0A6D00DB93A5 /* EasyTipView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = EasyTipView; path = Pods/EasyTipView; sourceTree = "<group>"; };
+		37DA67F31F506ADD00DB93A5 /* LiftBro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiftBro.entitlements; sourceTree = "<group>"; };
+		37EDDCBC1F3377AA00E9A2F1 /* MeasuringUnitTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasuringUnitTableViewController.swift; sourceTree = "<group>"; };
 		37F3A9F21EE5707D00855E31 /* TrainingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingsTableViewController.swift; sourceTree = "<group>"; };
 		37F3A9F41EE5709A00855E31 /* ExercisesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisesTableViewController.swift; sourceTree = "<group>"; };
 		37F3A9F61EE570C700855E31 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +98,14 @@
 		37FF5DA71EF86FCE00437F97 /* CreateSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSetViewController.swift; sourceTree = "<group>"; };
 		37FF5DAA1F0A72B300437F97 /* ExerciseInitial.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExerciseInitial.json; sourceTree = "<group>"; };
 		37FF5DAC1F0D2BED00437F97 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		4628212605541FD6D9BE5201 /* Pods-LiftBroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiftBroTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiftBroTests/Pods-LiftBroTests.release.xcconfig"; sourceTree = "<group>"; };
+		87ADC94E7BC452EFC0E2C20F /* Pods-LiftBro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiftBro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiftBro/Pods-LiftBro.debug.xcconfig"; sourceTree = "<group>"; };
+		93C350786C85E03663CC002F /* Pods-LiftBroUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiftBroUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiftBroUITests/Pods-LiftBroUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA27D2F6D01417E97E3BE44A /* Pods_LiftBroUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiftBroUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA9CC896548F315C48F2EAC1 /* Pods-LiftBroTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiftBroTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiftBroTests/Pods-LiftBroTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD56443B2ABBED2D29DE6A8F /* Pods-LiftBro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiftBro.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiftBro/Pods-LiftBro.release.xcconfig"; sourceTree = "<group>"; };
+		B599E938D2DE5ABD4974C4BF /* Pods-LiftBroUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiftBroUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiftBroUITests/Pods-LiftBroUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D107272A4F22668176F700AD /* Pods_LiftBroTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiftBroTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				316EC6928E5DABA2DD8C5FA9 /* Pods_LiftBro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0796228DD2044584AD3BFAEB /* Pods_LiftBroTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C02AF327116C256B4BA552 /* Pods_LiftBroUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +144,8 @@
 				375317231EDC634900878804 /* LiftBroTests */,
 				3753172E1EDC634900878804 /* LiftBroUITests */,
 				3753170A1EDC634900878804 /* Products */,
+				96B7FE088054F4577BC33B2D /* Pods */,
+				F6A99EC8D46E6549196853DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +162,7 @@
 		3753170B1EDC634900878804 /* LiftBro */ = {
 			isa = PBXGroup;
 			children = (
+				37DA67F31F506ADD00DB93A5 /* LiftBro.entitlements */,
 				375317101EDC634900878804 /* Main.storyboard */,
 				377770291EE5ADC10025B483 /* Controllers */,
 				3777702A1EE5ADD00025B483 /* TableViewCells */,
@@ -178,11 +202,13 @@
 				37FF5DA31EF1968000437F97 /* AddExerciseTableViewController.swift */,
 				37FF5DA51EF1C79B00437F97 /* SetsTableViewController.swift */,
 				37FF5DA71EF86FCE00437F97 /* CreateSetViewController.swift */,
+				3722A1F61F424B4100D44ADD /* FullHistoryTableViewController.swift */,
 				370F4CDB1F0FE6A500251CEF /* CloneTrainingTableViewController.swift */,
 				3709566E1F17A54100F203F7 /* NewExerciseTypeViewController.swift */,
 				374D89E11F18B17C00548BA7 /* ChooseCategoryTableViewController.swift */,
 				374D89E31F18B52D00548BA7 /* CreateExerciseTypeViewController.swift */,
 				378DD6A21F27932C008963F5 /* SettingsTableViewController.swift */,
+				37EDDCBC1F3377AA00E9A2F1 /* MeasuringUnitTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -220,6 +246,30 @@
 			path = LiftBro;
 			sourceTree = "<group>";
 		};
+		96B7FE088054F4577BC33B2D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				87ADC94E7BC452EFC0E2C20F /* Pods-LiftBro.debug.xcconfig */,
+				AD56443B2ABBED2D29DE6A8F /* Pods-LiftBro.release.xcconfig */,
+				AA9CC896548F315C48F2EAC1 /* Pods-LiftBroTests.debug.xcconfig */,
+				4628212605541FD6D9BE5201 /* Pods-LiftBroTests.release.xcconfig */,
+				93C350786C85E03663CC002F /* Pods-LiftBroUITests.debug.xcconfig */,
+				B599E938D2DE5ABD4974C4BF /* Pods-LiftBroUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F6A99EC8D46E6549196853DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37DA67F11F4F0A6D00DB93A5 /* EasyTipView */,
+				2924E7C9FFDCE1BE439B8D07 /* Pods_LiftBro.framework */,
+				D107272A4F22668176F700AD /* Pods_LiftBroTests.framework */,
+				AA27D2F6D01417E97E3BE44A /* Pods_LiftBroUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -227,9 +277,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 375317341EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBro" */;
 			buildPhases = (
+				63BFE6C626DD2B40E1AAB051 /* [CP] Check Pods Manifest.lock */,
 				375317051EDC634900878804 /* Sources */,
 				375317061EDC634900878804 /* Frameworks */,
 				375317071EDC634900878804 /* Resources */,
+				40D66F3BFE776D2E5BF2B9EC /* [CP] Embed Pods Frameworks */,
+				CAFD2AA735066754D3BA873A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,9 +297,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 375317371EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBroTests" */;
 			buildPhases = (
+				AA8C8BDCFACA124204C62AC3 /* [CP] Check Pods Manifest.lock */,
 				3753171C1EDC634900878804 /* Sources */,
 				3753171D1EDC634900878804 /* Frameworks */,
 				3753171E1EDC634900878804 /* Resources */,
+				501346C680299CA39569230E /* [CP] Embed Pods Frameworks */,
+				B9F503291EA87521517DA0BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,9 +318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3753173A1EDC634900878804 /* Build configuration list for PBXNativeTarget "LiftBroUITests" */;
 			buildPhases = (
+				16F4B5CDD933306EC39D47DE /* [CP] Check Pods Manifest.lock */,
 				375317271EDC634900878804 /* Sources */,
 				375317281EDC634900878804 /* Frameworks */,
 				375317291EDC634900878804 /* Resources */,
+				33ED19596416BD9EB6281E9F /* [CP] Embed Pods Frameworks */,
+				EF9F5387969AF2DBB15A2AD6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,6 +349,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = B24AHW8NH8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					3753171F1EDC634900878804 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -353,6 +417,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		16F4B5CDD933306EC39D47DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		33ED19596416BD9EB6281E9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiftBroUITests/Pods-LiftBroUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40D66F3BFE776D2E5BF2B9EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiftBro/Pods-LiftBro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		501346C680299CA39569230E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiftBroTests/Pods-LiftBroTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63BFE6C626DD2B40E1AAB051 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AA8C8BDCFACA124204C62AC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B9F503291EA87521517DA0BD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiftBroTests/Pods-LiftBroTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAFD2AA735066754D3BA873A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiftBro/Pods-LiftBro-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF9F5387969AF2DBB15A2AD6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiftBroUITests/Pods-LiftBroUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		375317051EDC634900878804 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -363,6 +565,7 @@
 				374D89E41F18B52D00548BA7 /* CreateExerciseTypeViewController.swift in Sources */,
 				3711D5AA1F13C1DA0016D5E6 /* ExerciseSet.swift in Sources */,
 				37F3A9F71EE570C700855E31 /* TrainingTableViewCell.swift in Sources */,
+				3722A1F71F424B4100D44ADD /* FullHistoryTableViewController.swift in Sources */,
 				37FF5DA41EF1968000437F97 /* AddExerciseTableViewController.swift in Sources */,
 				3753170D1EDC634900878804 /* AppDelegate.swift in Sources */,
 				370F4CDC1F0FE6A500251CEF /* CloneTrainingTableViewController.swift in Sources */,
@@ -379,6 +582,7 @@
 				374D89E21F18B17C00548BA7 /* ChooseCategoryTableViewController.swift in Sources */,
 				37F3A9F51EE5709A00855E31 /* ExercisesTableViewController.swift in Sources */,
 				378DD6A31F27932C008963F5 /* SettingsTableViewController.swift in Sources */,
+				37EDDCBD1F3377AA00E9A2F1 /* MeasuringUnitTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,8 +730,10 @@
 		};
 		375317351EDC634900878804 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87ADC94E7BC452EFC0E2C20F /* Pods-LiftBro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LiftBro/LiftBro.entitlements;
 				DEVELOPMENT_TEAM = B24AHW8NH8;
 				INFOPLIST_FILE = LiftBro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -539,8 +745,10 @@
 		};
 		375317361EDC634900878804 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD56443B2ABBED2D29DE6A8F /* Pods-LiftBro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LiftBro/LiftBro.entitlements;
 				DEVELOPMENT_TEAM = B24AHW8NH8;
 				INFOPLIST_FILE = LiftBro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -552,6 +760,7 @@
 		};
 		375317381EDC634900878804 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA9CC896548F315C48F2EAC1 /* Pods-LiftBroTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -567,6 +776,7 @@
 		};
 		375317391EDC634900878804 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4628212605541FD6D9BE5201 /* Pods-LiftBroTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -582,6 +792,7 @@
 		};
 		3753173B1EDC634900878804 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93C350786C85E03663CC002F /* Pods-LiftBroUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = B24AHW8NH8;
@@ -596,6 +807,7 @@
 		};
 		3753173C1EDC634900878804 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B599E938D2DE5ABD4974C4BF /* Pods-LiftBroUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = B24AHW8NH8;

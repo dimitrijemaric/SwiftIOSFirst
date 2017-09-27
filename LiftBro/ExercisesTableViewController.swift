@@ -9,11 +9,14 @@
 import UIKit
 import CoreData
 
-class ExercisesTableViewController: FetchedResultsTableViewController {
+class ExercisesTableViewController: FetchedResultsTableViewController, PassChosenExercisesDelegate {
 
     override func viewDidLoad() {
       
         super.viewDidLoad()
+    }
+    deinit {
+        print("deinit exercise")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -27,21 +30,44 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
         updateUI()
     }
     
+    
+    func didChose(exercises chosenExercises: [ExerciseType]) {
+        
+        self.training = TrainingsTableViewController.todaysTraining
+        self.title = "today"
+        for ex in chosenExercises{
+            
+            if !training!.isExerciseAlreadyAddedInTraining(ex){
+                
+                let exercise = Exercise(context: context!)
+                exercise.training = self.training
+                exercise.type = ex
+                exercise.category = ex.category
+                exercises.append(exercise)
+            }
+        }
+        
+        try? context?.save()
+        viewUpdated = false
+        updateUI()
+    }
+    
     var viewUpdated = false
     
-    @IBAction func startTrainingCloning(_ sender: UIBarButtonItem) {
+    
+    @IBAction func goHome(_ sender: UIBarButtonItem) {
         
-        self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "clone training"))!, animated: false)
+        _ = self.navigationController?.popToRootViewController(animated: false)
     }
     @IBOutlet weak var cloneTrainingButton: UIBarButtonItem!
-    var container: NSPersistentContainer? = AppDelegate.container
-    var context = AppDelegate.container.viewContext
+    weak var container: NSPersistentContainer? = AppDelegate.container
+    weak var context = AppDelegate.container.viewContext
     
    
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<Exercise>?
     
-    public var training : Training? {
+    weak var training : Training? {
     
         didSet{
             if training?.date as! Date > Calendar.current.startOfDay(for: Date()){
@@ -75,7 +101,7 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
         )
                 
         try? fetchedResultsController?.performFetch()
-        
+        print("\(fetchedResultsController?.fetchedObjects)")
         tableView.reloadData()
         }
         }
@@ -92,7 +118,6 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
-        let test = (fetchedResultsController?.sections!.count)!
         
         return (fetchedResultsController?.sections!.count)!
     }
@@ -160,8 +185,8 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
     
         let request : NSFetchRequest<ExerciseSet> = ExerciseSet.fetchRequest()
         request.predicate = NSPredicate(format: "exercise=%@", exercise)
-        let results = try? context.fetch(request)
-        if (results?.count)!>0 {return true}
+        let results = try? context?.fetch(request)
+        if (results??.count)!>0 {return true}
         else {return false}
     }
 
@@ -235,17 +260,18 @@ class ExercisesTableViewController: FetchedResultsTableViewController {
                     
                     vcSet.currentExercise = exercises[sourceCell.tag]
                 }
-
             }
         }
         
         else if segue.identifier == "Clone Training"{
         
-            if let vcClone = segue.destination as? CloneTrainingTableViewController{
+           if let vcClone = segue.destination as? CloneTrainingTableViewController{
             
-                vcClone.exercisesToClone = exercises
+            let exercisesFiltered = AppDelegate.removeDuplicates(from:exercises)
+                vcClone.exercisesToClone = exercisesFiltered.map{$0.type!}
+                vcClone.exercisesDelegate = self
             }
-                
+            viewUpdated = false
         }
     }
         // Get the new view controller using segue.destinationViewController.
