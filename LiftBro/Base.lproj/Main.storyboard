@@ -73,7 +73,7 @@
                                 <segue destination="yep-dt-uD2" kind="show" id="VJY-9Q-PZI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Start" style="plain" id="UpM-WR-YEf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UpM-WR-YEf">
                             <color key="tintColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="s5x-xV-BuO" kind="show" identifier="New Training" id="EG9-3o-ctG"/>
@@ -156,7 +156,7 @@
                                     <segue destination="s5x-xV-BuO" kind="show" identifier="Add Exercises To Training" id="EO9-eh-k4K"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem style="plain" systemItem="refresh" id="yvo-AG-9PV">
+                            <barButtonItem systemItem="refresh" id="yvo-AG-9PV">
                                 <color key="tintColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="fRp-rF-CUT" kind="show" identifier="Clone Training" id="Bhf-ht-z8n"/>
@@ -380,7 +380,7 @@
                                                 <color key="backgroundColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -454,6 +454,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="saveNewExercise:" destination="7yO-Yt-rAt" eventType="touchUpInside" id="qpF-5M-mw9"/>
+                                    <segue destination="KeU-ee-fWZ" kind="unwind" unwindAction="unwindToSettingsMenuWithSegue:" id="vhu-Uh-dRK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -478,8 +479,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGe-ka-7M2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="KeU-ee-fWZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-510" y="1864"/>
+            <point key="canvasLocation" x="-36" y="1695"/>
         </scene>
         <!--Create Set View Controller-->
         <scene sceneID="d5q-VL-lwa">
@@ -1111,7 +1113,7 @@
         <image name="settings" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EG9-3o-ctG"/>
+        <segue reference="EO9-eh-k4K"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

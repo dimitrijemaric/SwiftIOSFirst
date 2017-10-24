@@ -15,7 +15,6 @@ class TrainingsTableViewController: FetchedResultsTableViewController, EasyTipVi
     let defaults = UserDefaults.standard
     let container = AppDelegate.container
     let context = AppDelegate.container.viewContext
-    var addButtonDefaultAction : Selector? = nil
     static var todaysTraining : Training?
     static var currentColor: UIColor?
 
@@ -41,26 +40,13 @@ class TrainingsTableViewController: FetchedResultsTableViewController, EasyTipVi
         }
         firstLoad = true
         
-        addButtonDefaultAction = self.navigationItem.rightBarButtonItem?.action
-        var preferences = EasyTipView.Preferences()
-        preferences.drawing.font = UIFont(name: "Avenir-Book", size: 12.0)!
-        preferences.drawing.foregroundColor = tableView.separatorColor!
-        preferences.drawing.backgroundColor = tableView.sectionIndexColor!
-        preferences.drawing.arrowPosition = EasyTipView.ArrowPosition.top
-        
-        /*
-         * Optionally you can make these preferences global for all future EasyTipViews
-         */
-        EasyTipView.globalPreferences = preferences
-       
-        EasyTipView.show(forItem: self.navigationItem.rightBarButtonItem!, text: "Start here by adding exercises for today's workout")
-        
-    // deleteData()
+            // deleteData()
         
        if !areExercisesImported() {
         
             importInitialExercises()
        }
+        
         TrainingsTableViewController.getAllExercisesfromRepository()
         getOrCreateTodaysTraining()
         //deleteData()
@@ -191,7 +177,7 @@ class TrainingsTableViewController: FetchedResultsTableViewController, EasyTipVi
     fileprivate func updateUI(){
         
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: addButtonDefaultAction)
+       /* self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:addButtonDefaultAction)*/
         
         let request: NSFetchRequest<Training> = Training.fetchRequest()
         let selector = #selector(NSDate.compare(_:))

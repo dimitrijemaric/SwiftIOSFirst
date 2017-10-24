@@ -106,6 +106,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "LiftBro"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
