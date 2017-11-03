@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController, PassChosenUnitDelegate {
+class SettingsTableViewController: UITableViewController, PassChosenUnitDelegate, UITextFieldDelegate {
 
     
     
@@ -25,6 +25,9 @@ class SettingsTableViewController: UITableViewController, PassChosenUnitDelegate
         durationIncrement.text = "\(defaults.double(forKey: "durationIncrement"))"
        unitLabel.text = "\(defaults.string(forKey: "measureUnit")!)"
         
+        weightIncrement.delegate = self
+        repsIncrement.delegate = self
+        durationIncrement.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,6 +51,10 @@ class SettingsTableViewController: UITableViewController, PassChosenUnitDelegate
 
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       textField.resignFirstResponder()
+        return true
+    }
     
     
     @IBAction func unwindToSettingsMenu(segue: UIStoryboardSegue){

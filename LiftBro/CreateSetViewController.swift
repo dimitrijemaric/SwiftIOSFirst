@@ -34,6 +34,13 @@ class CreateSetViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var noteFieldLimit = 15
     
+    
+    
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         
